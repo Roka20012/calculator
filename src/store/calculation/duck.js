@@ -22,12 +22,14 @@ const gameStore = (state = initialState, { type, payload }) => {
 		case calculateActions.SUCCESS:
 			return {
 				...state,
+				// eslint-disable-next-line
 				result: eval(payload),
 				history: payload,
 			};
 		case exponentiationActions.SUCCESS:
 			return {
 				...state,
+				// eslint-disable-next-line
 				result: eval(payload),
 				history: payload,
 			};

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
+import { workerInstance } from '../../App';
 
 import CalculatorPanel from '../../components/CalculatorPanel';
 import ResultsOutput from '../../components/ResultsOutput';
@@ -33,52 +35,16 @@ const Calculator = () => {
 	const [value, setValue] = useState('');
 	const [history, setHistory] = useState([]);
 
-	const onChangeValue = (nextValue) => {
-		const newValue = value === 'Error' ? nextValue : value + nextValue;
-		switch (nextValue) {
-			case '=':
-				try {
-					const isInvalid = ~value.indexOf('**');
-					if (/^\d+$/.test(value)) break;
-					if (isInvalid) {
-						setValue('Error');
-					}
-					const expression = value.replace(/\^/g, '**');
-					if (expression === 'Error') break;
-					const result = eval(expression);
-					if (!result && result !== 0) {
-						setValue('Error');
-					} else {
-						setValue(result);
-						setHistory((prevHistory) => [
-							...prevHistory,
-							{ expression: value },
-						]);
-					}
-				} catch (err) {
-					setValue('Error');
-				}
-				break;
-			case 'C':
-				setValue('');
-				break;
-			case '←':
-				setValue(value.slice(0, -1));
-				break;
-			case 'dec':
-				const decValue = parseInt(value, 2);
-				const newVal = isNaN(decValue) ? 'Error' : decValue;
-				setValue(newVal);
-				break;
-			case 'bin':
-				const binValue = +value;
-				const newVale = isNaN(binValue) ? 'Error' : binValue;
-				setValue(newVale.toString(2));
-				break;
-			default:
-				setValue(newValue);
-				break;
-		}
+	const onChangeValue = async (nextValue) => {
+		const {
+			value: newValue,
+			history: newHistory,
+		} = await workerInstance.calculate(value, nextValue, history);
+
+		console.log(newValue, newHistory);
+
+		setValue(newValue);
+		setHistory(newHistory);
 	};
 
 	return (

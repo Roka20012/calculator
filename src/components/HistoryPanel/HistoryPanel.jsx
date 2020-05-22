@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-	Paper,
-	Typography,
-	makeStyles,
-	List,
-	ListItem,
-	ListItemText,
-	Button,
-} from '@material-ui/core';
-import { FixedSizeList } from 'react-window';
+import { Paper, Typography, makeStyles, List, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 	historyPanel: {

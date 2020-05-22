@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	primaryButton: {
 		fontWeight: 'bold',
+		color: 'white',
 		backgroundColor: '#ffb300',
 		'&:hover': {
 			backgroundColor: '#ffa000',
