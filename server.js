@@ -17,3 +17,8 @@ const server = http.createServer(app);
 server.listen(port, () =>
 	console.log(`App running on: http://localhost:${port}`)
 );
+
+// "start": "react-scripts start",
+// "server": "node server.js",
+// "build": "react-scripts build",
+// "test": "react-scripts test --env=jsdom",
