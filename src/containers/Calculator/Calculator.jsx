@@ -35,16 +35,16 @@ const Calculator = () => {
 	const [value, setValue] = useState('');
 	const [history, setHistory] = useState([]);
 
-	const onChangeValue = async (nextValue) => {
-		const {
-			value: newValue,
-			history: newHistory,
-		} = await workerInstance.calculate(value, nextValue, history);
+	workerInstance.onmessage = ({ data }) => {
+		if (data?.result?.value || data?.result?.history) {
+			const { value, history } = data?.result;
+			setValue(value);
+			setHistory(history);
+		}
+	};
 
-		console.log(newValue, newHistory);
-
-		setValue(newValue);
-		setHistory(newHistory);
+	const onChangeValue = (nextValue) => {
+		workerInstance.calculate(value, nextValue, history);
 	};
 
 	return (
