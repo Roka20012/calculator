@@ -33,7 +33,7 @@ export const calculate = (value, nextValue, prevHistory) => {
 			return { value: newVal, history: prevHistory };
 		case 'bin':
 			const binValue = +value;
-			const newVale = isNaN(binValue) ? 'Error' : binValue;
+			const newVale = isNaN(binValue) ? 'Error' : binValue.toString(2);
 			return { value: newVale, history: prevHistory };
 		default:
 			return { value: newValue, history: prevHistory };
