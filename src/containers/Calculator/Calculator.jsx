@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: 200,
 		marginBottom: 200,
 		padding: 20,
-		backgroundColor: '#fafafa',
+		backgroundColor: '#9e9e9e',
 		boxShadow: '0px 0px 20px -10px black',
 		alignSelf: 'center',
 		justifyContent: 'space-between',
