@@ -2,6 +2,10 @@
 	"name": "kv-72-lab2-var-2",
 	"version": "0.1.0",
 	"private": true,
+	"engines": {
+		"node": "~10.15.1",
+		"npm": "~6.9.0"
+	},
 	"dependencies": {
 		"@material-ui/core": "^4.9.14",
 		"@material-ui/icons": "^4.9.1",
@@ -24,8 +28,8 @@
 		"typeface-roboto": "0.0.75"
 	},
 	"scripts": {
-    "start": "node server.js",
-    "server": "node server.js",
+		"start": "node server.js",
+		"server": "node server.js",
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject"
